@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med-Beds Booking | Secure Your Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            color: #2a4d69;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #0a7ea4 0%, #1cb5e0 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            font-weight: 300;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature i {
+            font-size: 40px;
+            color: #1cb5e0;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: #0a7ea4;
+            margin-bottom: 15px;
+        }
+        
+        .testimonials {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .testimonial {
+            font-style: italic;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-author {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #2a4d69;
+        }
+        
+        .booking-section {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 40px 0;
+        }
+        
+        .booking-btn {
+            background: linear-gradient(to right, #0a7ea4 0%, #1cb5e0 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+        
+        .booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .dropdown-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 28px;
+            color: #0a7ea4;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: #2a4d69;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .feature {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-procedures"></i> MED-BEDS
+            </div>
+            <h1>Secure a Direct Appointment with Medbeds Experts</h1>
+            <p class="subtitle">Experience the future of wellness with our cutting-edge med-bed technology. Schedule your personalized consultation with our certified specialists today.</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-user-md"></i>
+                <h3>Expert Consultation</h3>
+                <p>Connect with our certified med-bed specialists for a comprehensive health assessment.</p>
+            </div>
+            
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>Instant Booking</h3>
+                <p>Schedule your appointment at your convenience with our easy online booking system.</p>
+            </div>
+            
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Process</h3>
+                <p>Your personal information and payment details are protected with advanced encryption.</p>
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <div class="testimonial">
+                <i class="fas fa-quote-left" style="color: #1cb5e0; font-size: 24px; margin-bottom: 15px;"></i>
+                <p>The med-bed consultation completely transformed my approach to wellness. The experts were knowledgeable and caring, and the technology is truly revolutionary. Worth every penny!</p>
+                <p class="testimonial-author">- Sarah Johnson, Wellness Advocate</p>
+            </div>
+        </div>
+        
+        <div class="booking-section">
+            <h2>Ready to Experience the Future of Wellness?</h2>
+            <p>Take the first step toward optimal health by booking your consultation with our med-bed experts.</p>
+            
+            <button class="booking-btn" onclick="toggleDropdown()">Book Now <i class="fas fa-arrow-down"></i></button>
+            
+            <div class="dropdown-content" id="dropdownContent">
+                <h3>Secure Your Appointment Today</h3>
+                <p>Consult with our med-bed specialists for a comprehensive health assessment</p>
+                <div class="price">$70</div>
+                <p>After payment, you'll be redirected to schedule your appointment</p>
+                
+                <button class="booking-btn" onclick="initiatePayment()">Proceed to Payment</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Med-Beds Wellness Center. All rights reserved.</p>
+            <p>Contact us: support@medbeds.com | (800) 123-4567</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownContent');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            } else {
+                dropdown.style.display = 'block';
+            }
+        }
+        
+        function initiatePayment() {
+            // In a real implementation, this would connect to PayStack
+            // For demo purposes, we'll simulate the process
+            
+            alert("In a real implementation, this would redirect to PayStack payment page.");
+            
+            // After successful payment, redirect to Telegram
+            // In a real implementation, this would happen after PayStack confirms payment
+            setTimeout(function() {
+                // This is where the redirect happens after successful payment
+                window.location.href = "tg://resolve?domain=SSkyePrince"; // REDIRECT LINK LOCATION
+            }, 2000);
+        }
+        
+        // For demonstration purposes - in a real implementation, you would use PayStack's API
+        /* 
+        REAL PAYSTACK INTEGRATION CODE WOULD LOOK SOMETHING LIKE THIS:
+        
+        function payWithPaystack() {
+            let handler = PaystackPop.setup({
+                key: 'pk_live_742d973a21ac0e002db0d9632e99b90aac454274', // Replace with your public key
+                email: 'customer@email.com', // Customer email
+                amount: 7000, // Amount in kobo (70 * 100)
+                currency: "USD",
+                ref: ''+Math.floor((Math.random() * 1000000000) + 1), // Random reference
+                onClose: function(){
+                    alert('Window closed.');
+                },
+                callback: function(response){
+                    // After payment verification
+                    window.location.href = "tg://resolve?domain=SSkyePrince"; // REDIRECT LINK LOCATION
+                }
+            });
+            handler.openIframe();
+        }
+        
+        NOTE: You need to add your PayStack public key where indicated above.
+        The actual payment verification should be done on your server for security.
+        */
+    </script>
+    
+    <!-- 
+    FOR ACTUAL PAYSTACK INTEGRATION, YOU WOULD NEED TO:
+    1. Sign up for a PayStack account
+    2. Include the PayStack script in your page: <script src="https://js.paystack.co/v1/inline.js"></script>
+    3. Replace the initiatePayment() function with actual PayStack code
+    4. Add your public key in the PayStack setup
+    5. Set up server-side payment verification (for security, never use secret key in client-side code)
+    6. After verification, redirect to the Telegram link
+    -->
+</body>
+</html>
