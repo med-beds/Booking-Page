@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Med-Beds Booking | Secure Your Appointment</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
         * {
             margin: 0;
@@ -152,12 +153,58 @@
             margin: 15px 0;
         }
         
+        .payment-form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2a4d69;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
         footer {
             text-align: center;
             padding: 30px;
             margin-top: 40px;
             color: #2a4d69;
             font-size: 0.9rem;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1cb5e0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         @media (max-width: 768px) {
@@ -225,7 +272,24 @@
                 <div class="price">$70</div>
                 <p>After payment, you'll be redirected to schedule your appointment</p>
                 
-                <button class="booking-btn" onclick="initiatePayment()">Proceed to Payment</button>
+                <div class="payment-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Processing your payment...</p>
+                </div>
+                
+                <button class="booking-btn" onclick="payWithPaystack()">Proceed to Payment</button>
             </div>
         </div>
         
@@ -245,55 +309,53 @@
             }
         }
         
-        function initiatePayment() {
-            // In a real implementation, this would connect to PayStack
-            // For demo purposes, we'll simulate the process
-            
-            alert("In a real implementation, this would redirect to PayStack payment page.");
-            
-            // After successful payment, redirect to Telegram
-            // In a real implementation, this would happen after PayStack confirms payment
-            setTimeout(function() {
-                // This is where the redirect happens after successful payment
-                window.location.href = "tg://resolve?domain=SSkyePrince"; // REDIRECT LINK LOCATION
-            }, 2000);
-        }
-        
-        // For demonstration purposes - in a real implementation, you would use PayStack's API
-        /* 
-        REAL PAYSTACK INTEGRATION CODE WOULD LOOK SOMETHING LIKE THIS:
-        
         function payWithPaystack() {
-            let handler = PaystackPop.setup({
-                key: 'pk_live_742d973a21ac0e002db0d9632e99b90aac454274', // Replace with your public key
-                email: 'customer@email.com', // Customer email
-                amount: 7000, // Amount in kobo (70 * 100)
-                currency: "USD",
-                ref: ''+Math.floor((Math.random() * 1000000000) + 1), // Random reference
-                onClose: function(){
-                    alert('Window closed.');
+            // Get form values
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            
+            // Validate form
+            if (!email || !name) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Show loading indicator
+            document.getElementById('loading').style.display = 'block';
+            
+            // Initialize Paystack
+            const handler = PaystackPop.setup({
+                key: 'pk_live_742d973a21ac0e002db0d9632e99b90aac454274', // YOUR PUBLIC KEY
+                email: email,
+                amount: 7000, // 70 USD in kobo (smallest currency unit)
+                currency: 'USD',
+                ref: 'MB_' + Math.floor((Math.random() * 1000000000) + 1), // Generate a unique reference
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Customer Name",
+                            variable_name: "customer_name",
+                            value: name
+                        }
+                    ]
                 },
-                callback: function(response){
-                    // After payment verification
+                callback: function(response) {
+                    // Payment successful
+                    // In a real implementation, you would verify the transaction on your server
+                    alert('Payment complete! Reference: ' + response.reference);
+                    
+                    // Redirect to Telegram
                     window.location.href = "tg://resolve?domain=SSkyePrince"; // REDIRECT LINK LOCATION
+                },
+                onClose: function() {
+                    // Hide loading indicator when modal is closed
+                    document.getElementById('loading').style.display = 'none';
+                    alert('Payment window closed.');
                 }
             });
+            
             handler.openIframe();
         }
-        
-        NOTE: You need to add your PayStack public key where indicated above.
-        The actual payment verification should be done on your server for security.
-        */
     </script>
-    
-    <!-- 
-    FOR ACTUAL PAYSTACK INTEGRATION, YOU WOULD NEED TO:
-    1. Sign up for a PayStack account
-    2. Include the PayStack script in your page: <script src="https://js.paystack.co/v1/inline.js"></script>
-    3. Replace the initiatePayment() function with actual PayStack code
-    4. Add your public key in the PayStack setup
-    5. Set up server-side payment verification (for security, never use secret key in client-side code)
-    6. After verification, redirect to the Telegram link
-    -->
 </body>
 </html>
